@@ -1,0 +1,23 @@
+.custom-modal {
+  box-shadow: 4px 4px 16px rgba(237, 237, 237, 0.2);
+  border-radius: 24px;
+  // width: 817px !important;
+  // height: 1281px !important;
+  .ant-modal-content {
+    background: #ffffff;
+    height: 100%;
+    // padding: 50px;
+    box-shadow: 4px 4px 16px rgba(237, 237, 237, 0.2);
+    border-radius: 24px;
+  }
+  .ant-modal-body {
+    padding: 0;
+    height: 100%;
+  }
+}
+
+.wrapper {
+  .ant-modal {
+    width: unset;
+  }
+}

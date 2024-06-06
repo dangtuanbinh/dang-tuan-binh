@@ -1,5 +1,3 @@
-import { IToken } from "src/utils/types/token";
-
 // Modal
 export const modalStatus = (state: any) => state.modal.isOpen;
 export const modalTemplate = (state: any) => state.modal.template;

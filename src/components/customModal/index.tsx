@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 import {
   modalContent,
-  modalData,
   modalSize,
   modalStatus,
   modalTag,
@@ -14,7 +13,6 @@ import { useDispatch } from "react-redux";
 import { closeModal } from "../../store/components/customModal/modalSlice";
 import { Modal } from "antd";
 
-import React from "react";
 import TokenList from "../../views/tokenList";
 import Notification from "src/views/notification";
 
@@ -25,7 +23,6 @@ function CustomModal() {
 
   const isOpen = useSelector(modalStatus);
   const template = useSelector(modalTemplate);
-  const data = useSelector(modalData);
   const size = useSelector(modalSize);
   const tag = useSelector(modalTag);
   const content= useSelector(modalContent)
@@ -71,7 +68,6 @@ function CustomModal() {
       centered={true}
       zIndex={2000}
       className={classNamePrefix}
-      // closeIcon={<img src={icClose} width={24} height={24} alt="" />}
     >
       {generateContent(template)}
     </Modal>

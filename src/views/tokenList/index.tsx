@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.scss";
 import { CONSTANT } from "src/utils/constants";
 import { SearchOutlined } from "@ant-design/icons";
@@ -21,6 +21,8 @@ const TokenList: React.FC<ITokenListProps> = (props) => {
 
   const dispatch = useDispatch();
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const handleTokenSelect = (item: any) => {
     if (tag === CONSTANT.pay) {
       dispatch(setSelectedPayToken({ selectedPayToken: item }));
@@ -31,12 +33,17 @@ const TokenList: React.FC<ITokenListProps> = (props) => {
     dispatch(closeModal())
   };
 
+  const filteredTokenList = tokenList.filter((item) =>
+    item.currency.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className={classNamePrefix}>
       <h3>{CONSTANT.select_token}</h3>
 
       <div className={`${classNamePrefix}__search-box`}>
-        <input type="text" placeholder={CONSTANT.search_placeholder} />
+        <input type="text" placeholder={CONSTANT.search_placeholder} value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)} />
         <div className={`${classNamePrefix}__search-icon`}>
           <SearchOutlined />
         </div>
@@ -48,7 +55,7 @@ const TokenList: React.FC<ITokenListProps> = (props) => {
         </span>
 
         <div className={`${classNamePrefix}__result`}>
-          {tokenList.map((item, index) => (
+          {filteredTokenList.map((item, index) => (
             <div
               className={`${classNamePrefix}__result-item`}
               key={index}

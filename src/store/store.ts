@@ -1,29 +1,19 @@
 import {
   configureStore,
-  isRejectedWithValue,
-  MiddlewareAPI,
-  Middleware,
 } from "@reduxjs/toolkit";
 import modalReducer from "./components/customModal/modalSlice";
+import tokenReducer from "./components/tokenList/tokenSlice"
 
 const rootReducer = {
   modal: modalReducer,
+  token: tokenReducer
 };
-
-const rtkQueryErrorLogger: Middleware =
-  (api: MiddlewareAPI) => (next) => (action) => {
-    if (isRejectedWithValue(action)) {
-    }
-    return next(action);
-  };
-
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }).concat([
-      rtkQueryErrorLogger,
     ]),
 });
 

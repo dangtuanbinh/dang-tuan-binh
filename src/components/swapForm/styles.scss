@@ -11,6 +11,7 @@ $text-color: #81858c;
 $gray-background: #f3f5f7;
 $black: #000000;
 $error: #ef454a;
+$white: #ffffff;
 
 .swap-form {
   width: 446px;
@@ -20,7 +21,7 @@ $error: #ef454a;
 
   border-radius: 16px;
 
-  background-color: #fff;
+  background-color: $white;
 
   box-shadow: 0 8px 56px #1212140f;
 
@@ -37,7 +38,7 @@ $error: #ef454a;
       margin-left: 10px;
 
       font-size: 20px;
-      color: #000000;
+      color: $black;
       font-weight: bold;
     }
   }
@@ -174,7 +175,7 @@ $error: #ef454a;
   &__form-error {
     @include flexbox(row, space-between, center);
 
-    margin: 10px 0;
+    margin: 10px 0 30px 0;
 
     font-size: 14px;
 
@@ -208,7 +209,7 @@ $error: #ef454a;
 
     span {
       font-size: 16px;
-      color: #ffffff;
+      color: $white;
     }
   }
 
@@ -223,14 +224,19 @@ $error: #ef454a;
     height: 40px;
 
     border-radius: 999px;
-    border: 4px solid #fff;
+    border: 4px solid $white;
 
     background-color: $primary;
 
-
-    span{
-        color: #ffffff;
-        font-size: 20px;
+    span {
+      color: $white;
+      font-size: 20px;
     }
+  }
+
+  &__loading {
+    @include flexbox(row, center, center);
+    
+    width: 100%;
   }
 }

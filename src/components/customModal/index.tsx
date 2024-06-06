@@ -2,13 +2,21 @@ import "./styles.scss";
 
 import { useSelector } from "react-redux";
 
-import { modalData, modalSize, modalStatus, modalTemplate } from "../../store/selectors/RootSelector";
+import {
+  modalContent,
+  modalData,
+  modalSize,
+  modalStatus,
+  modalTag,
+  modalTemplate,
+} from "../../store/selectors/RootSelector";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../store/components/customModal/modalSlice";
 import { Modal } from "antd";
 
 import React from "react";
 import TokenList from "../../views/tokenList";
+import Notification from "src/views/notification";
 
 const classNamePrefix = "custom-modal";
 
@@ -19,6 +27,8 @@ function CustomModal() {
   const template = useSelector(modalTemplate);
   const data = useSelector(modalData);
   const size = useSelector(modalSize);
+  const tag = useSelector(modalTag);
+  const content= useSelector(modalContent)
 
   const renderSize = (modalSize: string) => {
     switch (modalSize) {
@@ -36,7 +46,9 @@ function CustomModal() {
   const generateContent = (template: string) => {
     switch (template) {
       case "token-list":
-        return <TokenList />;
+        return <TokenList tag={tag} />;
+      case "notification":
+        return <Notification content={content} />;
       default:
         return;
     }

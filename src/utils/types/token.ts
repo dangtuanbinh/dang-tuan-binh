@@ -3,3 +3,8 @@ export interface IToken {
   date: string;
   price: number;
 }
+
+
+export interface ISelectedToken{
+  selectedToken: IToken
+}
